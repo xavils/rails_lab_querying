@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20140506190132) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "tow_trucks", force: true do |t|
+  create_table "tow_trucks", force: :cascade do |t|
     t.text    "make"
     t.text    "model"
     t.integer "year"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20140506190132) do
     t.text    "notes"
   end
 
-  create_table "vehicles", force: true do |t|
+  create_table "vehicles", force: :cascade do |t|
     t.text    "make"
     t.text    "model"
     t.text    "color"
@@ -39,8 +39,5 @@ ActiveRecord::Schema.define(version: 20140506190132) do
     t.boolean "is_paid"
     t.text    "notes"
   end
-
-  add_index "vehicles", ["category"], name: "index_vehicles_on_category", using: :btree
-  add_index "vehicles", ["vin"], name: "index_vehicles_on_vin", unique: true, using: :btree
 
 end
